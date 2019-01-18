@@ -1,0 +1,33 @@
+
+.cilivisiblefix {
+  margin-left: 8px !important;
+}
+
+.cliconvisiblefix {
+  margin-left: 15px !important;
+}
+
+ul.cloud li {
+
+	padding: 8px 12px;
+	border-bottom: 1px solid #DEDEDE;
+}
+
+ul.cloud li a.cilink {
+
+	float:right;
+	margin-left:10px;
+	min-width:25px;
+	text-align:center;
+}
+
+ul.cloud li.cirow1 {
+
+	background: #f2f2f2;
+}
+
+ul.cloud li:hover {
+
+	background: #e6e6e6;
+}
+
