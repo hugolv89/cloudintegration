@@ -54,7 +54,7 @@ function init() {
 	elgg_register_plugin_hook_handler('entity:url', 'object', __NAMESPACE__.'\\set_url');
 
 	// Register a plugin hook handler for the entity menu
-    elgg_register_plugin_hook_handler('register', 'menu:entity',  __NAMESPACE__.'\\menu_handler');
+    	elgg_register_plugin_hook_handler('register', 'menu:entity',  __NAMESPACE__.'\\menu_handler');
 
 	// Register for notifications
 	elgg_register_notification_event('object', PLUGIN_ID, array('create'));
@@ -244,6 +244,7 @@ function owner_block_menu($hook, $type, $return, $params) {
  * @return string URL of Ownlcoud.
  */
 function set_url($hook, $type, $url, $params) {
+	
 	$entity = $params['entity'];
 	if (elgg_instanceof($entity, 'object', PLUGIN_ID)) {
 		$friendly_title = elgg_get_friendly_title($entity->title);
@@ -255,6 +256,7 @@ function set_url($hook, $type, $url, $params) {
  * Customize the entity menu for CloudIntegration objects
  */
 function menu_handler($hook, $type, $menu, $params) {
+	
     // The entity can be found from the $params parameter
     $entity = $params['entity'];
 
@@ -368,33 +370,35 @@ function menu_handler($hook, $type, $menu, $params) {
  * @return Elgg\Notifications\Notification
  */
 function prepare_notification($hook, $type, $notification, $params) {
-    $entity = $params['event']->getObject();
-    $owner = $params['event']->getActor();
-    $recipient = $params['recipient'];
-    $language = $params['language'];
-    $method = $params['method'];
+	
+	$entity = $params['event']->getObject();
+	$owner = $params['event']->getActor();
+	$recipient = $params['recipient'];
+	$language = $params['language'];
+	$method = $params['method'];
 
-    // Title for the notification
-    $notification->subject = elgg_echo('cloudintegration:notify:subject', array($entity->title), $language);
+	// Title for the notification
+	$notification->subject = elgg_echo('cloudintegration:notify:subject', array($entity->title), $language);
 
-    // Message body for the notification
-    $notification->body = elgg_echo('cloudintegration:notify:body', array(
-        $owner->name,
-        $entity->title,
-        $entity->getExcerpt(),
-        $entity->getURL()
-    ), $language);
+	// Message body for the notification
+	$notification->body = elgg_echo('cloudintegration:notify:body', array(
+		$owner->name,
+		$entity->title,
+		$entity->getExcerpt(),
+		$entity->getURL()
+	), $language);
 
-    // Short summary about the notification
-    $notification->summary = elgg_echo('cloudintegration:notify:summary', array($entity->title), $language);
+	// Short summary about the notification
+	$notification->summary = elgg_echo('cloudintegration:notify:summary', array($entity->title), $language);
 
-    return $notification;
+	return $notification;
 }
 
 /**
  * Register CloudIntegration with ECML.
  */
 function ecml_views_hook($hook, $entity_type, $return_value, $params) {
+	
 	$return_value['object/'.PLUGIN_ID] = elgg_echo('cloudintegration:cloudintegrations');
 
 	return $return_value;
