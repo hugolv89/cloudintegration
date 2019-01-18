@@ -101,7 +101,7 @@ function init() {
 /*
  * Dispatches plugin pages.
  * URLs take the form of
- *  All cloudintegration:	     cloud/all
+ *  All cloudintegration:	 cloud/all
  *  User's cloudintegration:     cloud/owner/<username>
  *  Friends' cloudintegration:   cloud/friends/<username>
  *  view file cloudintegration:  cloud/view/<guid>/<title>
